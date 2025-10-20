@@ -30,20 +30,20 @@ Auf einem weitläufigen Industriegelände sollen Telemetriedaten von Baggern (Da
 - HTTPS
 - gRPC
 - Message Queue
-- Wlan / 5G
+- Wlan / 4G / 5G
 
 ---
 
 # MQTT
 
-**Use Case**: Data collection (from excavators)
+### Use Case: Data collection (from excavators)
 - **Publishers**: The clients (excavators) which will send data to the broker.
 - **Broker**: Central MQTT broker receives and forwards messages from all excavators
 - **Subscribers**: Servers can subscribe to specific topics (e.g., `excavator/001/battery`)
-
-**Reasons**:
+<br><br>
+### Reasons
 - Lightweight on clients
-- Reliable message delivery with QoS (0, 1, 2) levels (0 = best effort, 1 = at least once, 2 = exactly once)
+- Reliable message delivery with QoS (0, 1, 2) levels <br>(0 = best effort, 1 = at least once, 2 = exactly once)
 - Scalable for hundreds of machines
 - Minimal bandwidth usage (5G)
 
@@ -51,11 +51,12 @@ Auf einem weitläufigen Industriegelände sollen Telemetriedaten von Baggern (Da
 
 # gRPC
 
-**Use Case**: Data processing
+### Use Case: Data processing
 - **Data Processing**: High-speed communication between services
 - **Bi-Directional Communication**: Communication between the server and broker (subscription)
+<br><br>
 
-**Advantages**:
+### Advantages
 - Faster parsing
 - Parsed values from MQTT Broker get sent to the server via gRPC
 - smaller payload size (5G is cheaper)
@@ -65,13 +66,14 @@ Auf einem weitläufigen Industriegelände sollen Telemetriedaten von Baggern (Da
 
 # HTTPS
 
-**Use Case**: Data storage and web access
+### Use Case: Data storage and web access
 - **Data Storage**: Storage of telemetry data in databases
 - **Web Dashboard**: Maintenance personnel access monitoring dashboards securely
 - **API Communication**: REST APIs provide secure access to historical data
 - **Mobile Apps**: Maintenance apps communicate via HTTPS
+<br><br>
 
-**Advantages**:
+### Advantages:
 - End-to-end encryption
 - Accessible from anywhere
 - Authentication methods (OAuth2, JWT, etc.)
@@ -79,10 +81,10 @@ Auf einem weitläufigen Industriegelände sollen Telemetriedaten von Baggern (Da
 
 ---
 
-# Concrete Example - 5G vs WLAN
-
-- **5G**: More expensive, but more flexible
-- **WLAN**: Cheaper, but has to be in range of clients
+# Concrete Example - 4G vs 5G vs WLAN
+- **5G**: More expensive, but more flexible and faster
+- **4G**: Cheaper than 5G, widely available, but offers lower bandwidth and higher latency
+- **WLAN**: Cheapest, but has to be in range of clients
 
 - **Best Suited**: 5G
     - Excavators are mobile, so they could be anywhere
@@ -130,6 +132,14 @@ Auf einem weitläufigen Industriegelände sollen Telemetriedaten von Baggern (Da
     - Panache (ORM)
     - Authentication
     - gRPC
+
+---
+src: ./pages/database.md
+---
+
+---
+src: ./pages/tls-ssl.md
+---
 
 ---
 
